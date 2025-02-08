@@ -1,0 +1,15 @@
+- hosts: all
+  become: yes
+  
+  tasks: 
+  - name: Install Apache
+    ansible.builtin.dnf:
+      name: httpd
+      state: present
+      update_cache: yes
+
+  - name: Start apache
+    ansible.builtin.service:
+      name: httpd
+      state: started
+      enabled: yes

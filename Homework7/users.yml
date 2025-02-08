@@ -1,0 +1,16 @@
+
+- hosts: all
+  become: yes  # Run as root
+
+  tasks:
+    - name: Create users
+      user:
+        name: "{{ item }}"
+        state: present
+        shell: /bin/bash
+        createhome: yes
+      loop:
+        - jenny
+        - rose
+        - jisoo
+        - lisa
